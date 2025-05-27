@@ -1,0 +1,50 @@
+<!-- Imagen de fondo -->
+<div class="background-image"></div>
+
+<!-- Caja del login centrada verticalmente y alineada a la izquierda -->
+<div class="login-box">
+  <h2>Iniciar Sesión</h2>
+
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="usuario">Usuario</label>
+      <input
+        type="text"
+        id="usuario"
+        name="usuario"
+        [(ngModel)]="user.usuario"
+        required
+        #usuario="ngModel"
+      />
+      <div *ngIf="usuario.invalid && usuario.touched" class="error">
+        El usuario es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input
+        type="password"
+        id="contrasena"
+        name="contrasena"
+        [(ngModel)]="user.contrasena"
+        required
+        #contrasena="ngModel"
+      />
+      <div *ngIf="contrasena.invalid && contrasena.touched" class="error">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+
+    <p class="register-link">
+      ¿No tienes cuenta?
+      <a (click)="goRegister()" style="cursor:pointer; color: blue; text-decoration: underline;">
+        Regístrate aquí
+      </a>
+    </p>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </form>
+</div>

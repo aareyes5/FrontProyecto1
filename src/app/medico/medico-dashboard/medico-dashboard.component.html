@@ -1,0 +1,22 @@
+<div *ngIf="persona" class="medico-dashboard">
+  <div class="header-session">
+    <h2>Bienvenido, Dr. {{ persona.nombre }}</h2>
+  </div>
+
+  <p><strong>Cédula:</strong> {{ persona.cedula || 'No registrada' }}</p>
+  <p><strong>Edad:</strong> {{ persona.edad || 'No registrada' }}</p>
+
+  <nav>
+    <ul class="menu">
+      <li>
+        <a routerLink="/medico/agenda" routerLinkActive="activo">📅 Ver Turnos Agendados</a>
+      </li>
+      <li>
+        <a (click)="cerrarSesion()">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </nav>
+
+  <hr />
+  <router-outlet></router-outlet>
+</div>

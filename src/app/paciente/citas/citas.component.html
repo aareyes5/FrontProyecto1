@@ -1,0 +1,69 @@
+<div class="citas-container">
+  <h3>Mis Turnos</h3>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="datosListos">
+    <table class="tabla-turnos">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Médico</th>
+          <th>Especialidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turno of turnos">
+          <td data-label="Fecha">{{ turno.fecha }}</td>
+          <td data-label="Hora">{{ turno.hora }}</td>
+          <td data-label="Médico">{{ getMedicoNombre(turno.id_medico) }}</td>
+          <td data-label="Especialidad">{{ getEspecialidadNombre(turno.id_especialidad) }}</td>
+          <td data-label="Acciones">
+            <button (click)="mostrarFormularioEditar(turno)">Editar</button>
+            <button (click)="eliminarTurno(turno.id_turno)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="mostrarFormularioNuevo()">+ Nuevo Turno</button>
+  </div>
+
+  <div *ngIf="formularioVisible" class="form-turno">
+    <h4>{{ turnoEditar ? 'Editar Turno' : 'Nuevo Turno' }}</h4>
+    <form (ngSubmit)="guardarTurno()">
+      <label>
+        Fecha:
+        <input type="date" [(ngModel)]="formTurno.fecha" name="fecha" required />
+      </label>
+
+      <label>
+        Hora:
+        <input type="time" [(ngModel)]="formTurno.hora" name="hora" required />
+      </label>
+
+      <label>
+        Médico:
+        <select [(ngModel)]="formTurno.id_medico" name="id_medico" required>
+          <option *ngFor="let m of medicos" [value]="m.idMedico">
+            {{ getMedicoNombre(m.idMedico) }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Especialidad:
+        <select [(ngModel)]="formTurno.id_especialidad" name="id_especialidad" required>
+          <option value="0" disabled>Seleccione especialidad</option>
+          <option *ngFor="let e of especialidades" [value]="e.idEspecialidad">
+            {{ e.nombre }}
+          </option>
+        </select>
+      </label>
+
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="cancelarFormulario()">Cancelar</button>
+    </form>
+  </div>
+</div>

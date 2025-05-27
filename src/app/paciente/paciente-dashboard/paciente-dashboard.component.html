@@ -1,0 +1,20 @@
+<div *ngIf="persona" class="paciente-dashboard">
+  <div class="header-session">
+    <h2>Bienvenido, {{ persona.nombre }}</h2>
+  </div>
+
+  <p><strong>Cédula:</strong> {{ persona.cedula }}</p>
+  <p><strong>Edad:</strong> {{ persona.edad }}</p>
+
+  <nav>
+    <ul class="menu">
+      <li><a routerLink="/paciente/citas" routerLinkActive="activo">Mis Turnos</a></li>
+      <li><a routerLink="/paciente/medicos" routerLinkActive="activo">Médicos</a></li>
+      <li><a routerLink="/paciente/especialidades" routerLinkActive="activo">Especialidades</a></li>
+      <li><a (click)="cerrarSesion()">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+
+  <hr />
+  <router-outlet></router-outlet>
+</div>

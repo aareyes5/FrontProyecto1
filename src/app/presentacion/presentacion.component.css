@@ -1,0 +1,87 @@
+/* Container general */
+div {
+  max-width: 400px;
+  margin: 30px auto;
+  background: #f5f9fc;
+  border-radius: 8px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 50, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a2e44;
+}
+
+/* Título principal */
+h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #0d3b66;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Texto de detalles */
+p {
+  font-size: 1rem;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+/* Label del select */
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #073b4c;
+}
+
+/* Select estilizado */
+select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.8px solid #3a86ff;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #073b4c;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0077ff;
+  box-shadow: 0 0 5px #0077ff;
+}
+
+/* Botón */
+button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #3a86ff;
+  border: none;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #265df2;
+}
+
+/* Mensaje de error */
+.error {
+  margin-top: 15px;
+  color: #e63946;
+  font-weight: 600;
+  background-color: #ffd6d6;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+}

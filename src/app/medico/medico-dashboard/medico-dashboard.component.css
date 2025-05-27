@@ -1,0 +1,94 @@
+/* Contenedor principal */
+.medico-dashboard {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px 30px;
+  background: #f7fafd;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Título principal */
+.medico-dashboard h2 {
+  color: #007bff; /* azul médico */
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+}
+
+/* Datos personales */
+.medico-dashboard p {
+  font-size: 1.1rem;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.medico-dashboard p strong {
+  color: #34495e;
+}
+
+/* Navegación de menú */
+.medico-dashboard nav {
+  margin-top: 30px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 25px;
+  justify-content: start;
+}
+
+.menu li {
+  flex: 1;
+}
+
+.menu a {
+  display: block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+}
+
+.menu a:hover,
+.menu a.activo {
+  background-color: #0056b3;
+  box-shadow: 0 6px 16px rgba(0, 86, 179, 0.6);
+  color: #e0f0ff;
+}
+
+/* Separador */
+hr {
+  margin: 40px 0 30px;
+  border: 0;
+  border-top: 2px solid #007bff;
+  opacity: 0.25;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu li {
+    flex: none;
+  }
+
+  .menu a {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+}

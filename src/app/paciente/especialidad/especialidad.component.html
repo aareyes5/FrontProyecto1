@@ -1,0 +1,26 @@
+<div class="especialidades-container">
+  <h2>Especialidades Disponibles</h2>
+
+  <div *ngIf="mensaje" class="mensaje-error">{{ mensaje }}</div>
+
+  <table *ngIf="especialidades.length > 0" class="tabla-especialidades">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Días</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let esp of especialidades">
+        <td>{{ esp.nombre }}</td>
+        <td>${{ esp.precio }}</td>
+        <td>{{ esp.dias }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="especialidades.length === 0 && !mensaje">
+    <p>No hay especialidades activas disponibles.</p>
+  </div>
+</div>

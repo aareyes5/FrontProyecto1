@@ -1,0 +1,25 @@
+<div class="citas-container">
+  <h3>Lista de Médicos</h3>
+
+  <table *ngIf="medicos.length > 0" class="tabla-turnos">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Especialidad</th>
+        <th>Horario Inicio</th>
+        <th>Horario Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medico of medicos">
+        <td data-label="Nombre">{{ medico.nombre }}</td>
+        <td data-label="Especialidad">{{ medico.idEspecialidad?.nombre || 'Sin especialidad' }}</td>
+        <td data-label="Horario Inicio">{{ medico.horarioInicio }}</td>
+        <td data-label="Horario Fin">{{ medico.horarioFin }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="medicos.length === 0">No hay médicos disponibles.</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+</div>

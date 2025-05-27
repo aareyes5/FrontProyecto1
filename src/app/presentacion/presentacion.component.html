@@ -1,0 +1,22 @@
+<div *ngIf="persona">
+  <h2>Bienvenido, {{ persona.nombre }}</h2>
+  <p><strong>Cédula:</strong> {{ persona.cedula }}</p>
+  <p><strong>Edad:</strong> {{ persona.edad }}</p>
+
+  <label for="rol">Selecciona cómo deseas ingresar:</label>
+  <select [(ngModel)]="opcionSeleccionada" name="rol" id="rol">
+    <option value="">-- Selecciona un rol --</option>
+    <option value="paciente">Paciente</option>
+    <option value="medico">Médico</option>
+  </select>
+
+  <button (click)="ingresar()">Ingresar</button>
+
+  <div *ngIf="accesoDenegado" class="error">
+    Rol incorrecto. Acceso denegado.
+  </div>
+</div>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>

@@ -1,0 +1,89 @@
+:host {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Imagen de fondo */
+.background-image {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://static.vecteezy.com/system/resources/previews/007/420/595/non_2x/medical-appointment-female-doctor-gives-professional-medical-help-to-male-patient-explains-written-information-on-paper-in-clipboard-gives-support-and-good-service-pose-at-hospital-near-desktop-free-photo.jpg') no-repeat center center;
+  background-size: cover;
+  filter: brightness(0.7);
+  z-index: -1;
+}
+
+/* Contenedor principal del formulario */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 420px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,245,0.7));
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  color: #222;
+}
+
+/* Título */
+.register-container h2 {
+  margin-bottom: 1.5rem;
+  color: #004085;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Inputs y selects */
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #004085;
+}
+
+/* Botones */
+button {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #004085;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #002752;
+}
+
+/* Mensajes */
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+

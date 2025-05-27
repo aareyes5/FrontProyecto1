@@ -1,0 +1,26 @@
+<div class="citas-container">
+  <h3>📅 Agenda de Turnos</h3>
+
+  <div *ngIf="mensaje" class="mensaje-error">{{ mensaje }}</div>
+
+  <table *ngIf="turnos.length > 0" class="tabla-turnos">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>ID Paciente</th>
+        <th>ID Médico</th>
+        <th>ID Especialidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of turnos">
+        <td>{{ turno.fecha }}</td>
+        <td>{{ turno.hora }}</td>
+        <td>{{ turno.idPaciente }}</td>
+        <td>{{ turno.idMedico.idMedico }}</td>
+        <td>{{ turno.idEspecialidad.idEspecialidad }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
