@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { PacienteDashboardComponent } from './paciente/paciente-dashboard/paciente-dashboard.component';
 import { CitasComponent } from './paciente/citas/citas.component';
 import { MedicosComponent } from './paciente/medicos/medicos.component';
@@ -30,6 +30,7 @@ import { AgendaComponent } from './medico/agenda/agenda.component';
     PresentacionComponent,
     MedicoDashboardComponent,
     EspecialidadComponent,
+
     AgendaComponent
   ],
   imports: [

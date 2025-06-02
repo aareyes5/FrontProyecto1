@@ -14,8 +14,9 @@ export interface TurnoDto {
   idPaciente: number;
   fecha: string;
   hora: string;
-  idMedico: { idMedico: number };
-  idEspecialidad: { idEspecialidad: number };
+idMedico: { idMedico: number, nombre: string };
+idEspecialidad: { idEspecialidad: number, nombre: string };
+
 }
 
 

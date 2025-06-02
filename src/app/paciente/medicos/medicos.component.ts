@@ -18,18 +18,20 @@ export class MedicosComponent implements OnInit {
   constructor(
     private medicosService: MedicosService,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    // Primero obtengo personas
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.error = 'Usuario no autenticado. Por favor, inicie sesión.';
+      return;
+    }
     this.userService.getPersonas().subscribe({
       next: (personas) => {
         this.personas = personas;
 
-        // Luego obtengo medicos
         this.medicosService.getMedicos().subscribe({
           next: (medicos) => {
-            // Mapeo cada medico para poner el nombre desde personas
             this.medicos = medicos.map(medico => {
               const persona = this.personas.find(p => p.idPersona === medico.idPersona);
               return {
@@ -44,4 +46,5 @@ export class MedicosComponent implements OnInit {
       error: () => this.error = 'Error cargando personas.'
     });
   }
+
 }

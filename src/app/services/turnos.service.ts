@@ -17,18 +17,19 @@ export class TurnosService {
   }
 
   getTurnosByMedico(idMedico: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/medico/${idMedico}`);
+    return this.http.get<any[]>(`${this.apiUrl}/medicos/${idMedico}`);
   }
 
   getAllTurnos(): Observable<TurnoDto[]> {
     return this.http.get<TurnoDto[]>(this.apiUrl);
   }
 
+
   getTurnosByMedicoAndFecha(idMedico: number, fecha: string): Observable<any[]> {
     const params = new HttpParams()
       .set('idMedico', idMedico.toString())
       .set('fecha', fecha);
-    return this.http.get<any[]>(`${this.apiUrl}/medico`, { params });
+    return this.http.get<any[]>(`${this.apiUrl}/medicos`, { params });
   }
 
   createTurno(turno: any): Observable<any> {
@@ -43,7 +44,12 @@ export class TurnosService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  getTurnos() {
-    return this.http.get(`${this.apiUrl}/turnos`);
-  }
+  getTurnosByPacienteAndFecha(idPaciente: number, fecha: string): Observable<any[]> {
+  const params = new HttpParams()
+    .set('idPaciente', idPaciente.toString())
+    .set('fecha', fecha);
+
+  return this.http.get<any[]>(`${this.apiUrl}/paciente`, { params });
+}
+
 }

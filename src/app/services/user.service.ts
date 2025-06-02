@@ -2,16 +2,19 @@
 import { Injectable } from '@angular/core';
 import { PersonaDto } from '../models/persona.model';
 import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiResponse } from '../models/login-response.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private personaActual?: PersonaDto;
-  private apiUrl = '/auth-api/api/auth/persona'; 
+  private apiUrl = environment.apiUrls.usuarios;
+  private apiLogin = environment.apiUrls.login;
 
   constructor(private http: HttpClient) { }
 
@@ -27,13 +30,23 @@ export class UserService {
     this.personaActual = undefined;
   }
 
-  getPersonas() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.get<ApiResponse<PersonaDto[]>>(this.apiUrl, { headers }).pipe(
-      map(response => response.objeto) // extraemos solo la data (lista de personas)
-    );
+ getPersonas(): Observable<PersonaDto[]> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    return throwError(() => new Error('Token no disponible. El usuario no está logueado.'));
   }
+
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.get<ApiResponse<PersonaDto[]>>(`${this.apiLogin}/persona`, { headers })
+    .pipe(map(response => response.objeto));
+}
+
+  getPersonaById(idPersona: number): Observable<PersonaDto> {
+    return this.http.get<PersonaDto>(`${this.apiLogin}/persona/${idPersona}`);
+  }
+
 }

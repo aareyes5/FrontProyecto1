@@ -18,8 +18,8 @@
         <tr *ngFor="let turno of turnos">
           <td data-label="Fecha">{{ turno.fecha }}</td>
           <td data-label="Hora">{{ turno.hora }}</td>
-          <td data-label="Médico">{{ getMedicoNombre(turno.id_medico) }}</td>
-          <td data-label="Especialidad">{{ getEspecialidadNombre(turno.id_especialidad) }}</td>
+          <td data-label="Médico">{{ turno.nombreMedico }}</td>
+          <td data-label="Especialidad">{{ turno.nombreEspecialidad }}</td>
           <td data-label="Acciones">
             <button (click)="mostrarFormularioEditar(turno)">Editar</button>
             <button (click)="eliminarTurno(turno.id_turno)">Eliminar</button>
@@ -47,7 +47,7 @@
         Médico:
         <select [(ngModel)]="formTurno.id_medico" name="id_medico" required>
           <option *ngFor="let m of medicos" [value]="m.idMedico">
-            {{ getMedicoNombre(m.idMedico) }}
+            {{ m.nombre }}
           </option>
         </select>
       </label>

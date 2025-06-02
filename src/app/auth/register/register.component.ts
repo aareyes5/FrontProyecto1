@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { RegisterDto } from '../../models/register.model';
 import { User } from '../../models/user.model';
 
@@ -31,29 +31,29 @@ export class RegisterComponent {
     this.error = '';
     this.success = '';
 
+    // 1. Registra la persona
     this.authService.register(this.user).subscribe({
       next: (res) => {
-        if (res.codigo === '1' && res.objeto?.idPersona) {
+        if (res.codigoRespuesta === '1' && res.objeto?.idPersona) {
           const idPersonaNum = res.objeto.idPersona.idPersona || res.objeto.idPersona;
-          // según tu API, a veces puede venir solo el número
 
+          // 2. Crea el usuario con el ID de persona devuelto
           const loginPayload: User = {
             usuario: this.user.usuario,
             mail: this.user.mail,
             contrasena: this.user.contrasena,
             estado: true,
-            rol: this.user.rol, // rol pacinete o medico
+            rol: this.user.rol,
             idPersona: { idPersona: idPersonaNum }
           };
 
-
           this.authService.saveLogin(loginPayload).subscribe({
             next: (resLogin) => {
-              if (resLogin.codigo === '1') {
+              if (resLogin.codigoRespuesta === '1') {
                 this.success = '✅ Usuario registrado correctamente. Redirigiendo...';
                 setTimeout(() => this.router.navigate(['/login']), 1500);
               } else {
-                this.error = resLogin.mensaje || '❌ Error al guardar login.';
+                this.error = resLogin.mensajeRespuesta || '❌ Error al guardar login.';
               }
             },
             error: (errLogin) => {
@@ -62,7 +62,7 @@ export class RegisterComponent {
             }
           });
         } else {
-          this.error = res.mensaje || '❌ Error al registrar persona.';
+          this.error = res.mensajeRespuesta || '❌ Error al registrar persona.';
         }
       },
       error: (err) => {
